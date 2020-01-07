@@ -1,0 +1,19 @@
+{
+    "swaggerDefinition": {
+      "info": {
+        "title": "mentor API",
+        "version": "1.0.0",
+        "description": "Mentors API documentation",
+        "contact": {
+          "name": "Ikhlaq Firdous"
+        },
+        "servers": [
+          "http://localhost:8080"
+        ]
+      }
+    },
+    "apis": [
+      "app.js",
+      "./routes/*.js"
+    ]
+  }
