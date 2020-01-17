@@ -87,7 +87,7 @@ router.post('/food',[
 router.put('/food/:foodId', mentorsController.updateMentor);
 /**
  * @swagger
- * /api/mentor/{foodId}:
+ * /api/food/{foodId}:
  *  delete:
  *    description: Removes mentor from DB.
  *    produces:
@@ -112,7 +112,7 @@ router.put('/food/:foodId', mentorsController.updateMentor);
 
 
 
-router.delete('/mentor/:mentorId', mentorsController.deleteMentor);
+router.delete('/food/:foodId', mentorsController.deleteMentor);
 
 
 module.exports = router;  
