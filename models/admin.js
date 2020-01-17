@@ -17,6 +17,10 @@ const adminSchema = new Schema({
       "predicted": {
         "type": "string",
         "required": true
+      },
+      "status": {
+        "type": "string",
+        "required": true
       }
 
 },

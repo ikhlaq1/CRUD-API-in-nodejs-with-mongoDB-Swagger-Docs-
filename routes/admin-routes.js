@@ -41,6 +41,8 @@ router.get('/food', mentorsController.getMentor);
  *              type: string
  *            predicted:
  *              type: string
+ *            status:
+ *              type: string
  *    responses:
  *      '200':
  *        description: Food added successfully.
@@ -75,6 +77,8 @@ router.post('/food',[
  *            createTillNow:
  *              type: string
  *            predicted:
+ *              type: string
+ *            status:
  *              type: string
  *    responses:
  *      '200':

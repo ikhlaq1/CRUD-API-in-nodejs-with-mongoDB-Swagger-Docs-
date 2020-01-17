@@ -51,11 +51,13 @@ exports.postMentor = (req, res, next) => {
     const quantity = req.body.quantity;
     const createTillNow = req.body.createTillNow;
     const predicted = req.body.predicted;
+    const status = req.body.status;
     const mentor = new mentorModel({
         foodName: foodName,
         quantity: quantity,
         createTillNow: createTillNow,
         predicted: predicted,
+        status: status
     });
     mentor.save()
         .then(result => {
