@@ -1,9 +1,9 @@
 {
     "swaggerDefinition": {
       "info": {
-        "title": "mentor API",
+        "title": "Kitchen inventory API",
         "version": "1.0.0",
-        "description": "Mentors API documentation",
+        "description": "Kitchen API documentation",
         "contact": {
           "name": "Ikhlaq Firdous"
         },

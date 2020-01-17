@@ -89,13 +89,13 @@ router.put('/food/:foodId', mentorsController.updateMentor);
  * @swagger
  * /api/food/{foodId}:
  *  delete:
- *    description: Removes mentor from DB.
+ *    description: Removes food item from DB.
  *    produces:
  *      - application/json
  *    parameters:
  *      - in: path
  *        name: foodId
- *        description: Food Item mentor from DB.
+ *        description: Remove Food Item from DB.
  *        schema:
  *          type: string
  *          required:
