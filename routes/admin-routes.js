@@ -3,118 +3,105 @@ const { check } = require('express-validator');
 const router = express.Router();
 const mentorsController = require('../controllers/admin-controller');
 
-
   /**
  * @swagger
- * /api/mentors:
+ * /api/food:
  *  get:
- *    description: Get all the mentors from DB
+ *    description: Get all the foods from DB
  *    produces:
  *      - application/json
  *    responses:
  *      '200':
- *        description: mentors fetched successfully.
+ *        description: foods fetched successfully.
  */
-router.get('/mentors', mentorsController.getMentor);
+router.get('/food', mentorsController.getMentor);
 
 /**
  * @swagger
- * /api/mentors:
+ * /api/food:
  *  post:
- *    description: Used to add mentors in DB
+ *    description: Use to add food in DB
  *    produces:
  *      - application/json
  *    parameters:
  *      - in: body
- *        name: Add mentor
- *        description: Add mentor in DB.
+ *        name: Add food
+ *        description: Add food in DB.
  *        schema:
  *          type: object
  *          required:
- *            - mentorName
- *            - description
+ *            - foodName
+ *            - quantity
  *          properties:
- *            mentorName:
+ *            foodName:
  *              type: string
- *            description:
+ *            quantity:
  *              type: string
- *            Gender:
+ *            createTillNow:
  *              type: string
- *            AgeYears:
- *              type: string
- *            tasks:
- *              type: string
- *            status:
- *              type: string
- *            ActivityLevel:
+ *            predicted:
  *              type: string
  *    responses:
  *      '200':
- *        description: Mentor added successfully.
+ *        description: Food added successfully.
  */
-router.post('/mentors',[
-    check('mentorName').trim().isLength({min:1}),
-    check('description').trim().isLength({min:1})
+router.post('/food',[
+    check('foodName').trim().isLength({min:1}),
+    check('quantity').trim().isLength({min:1})
 ],mentorsController.postMentor);
  /**
  * @swagger
- * /api/mentor/{mentorId}:
+ * /api/food/{foodId}:
  *  put:
- *    description: Used to update mentor in DB
+ *    description: Used to update food in DB
  *    produces:
  *      - application/json
  *    parameters:
  *      - in: path
- *        name: mentorId        
+ *        name: foodId        
  *      - in: body
- *        name: Add mentor
- *        description: Add mentor in DB.
+ *        name: Update Food
+ *        description: Update food in DB.
  *        schema:
  *          type: object
  *          required:
- *            - mentorName
- *            - description
+ *            - foodName
+ *            - quantity
  *          properties:
- *            mentorName:
+ *            foodName:
  *              type: string
- *            description:
+ *            quantity:
  *              type: string
- *            Gender:
+ *            createTillNow:
  *              type: string
- *            AgeYears:
- *              type: string
- *            tasks:
- *              type: string
- *            status:
- *              type: string
- *            ActivityLevel:
+ *            predicted:
  *              type: string
  *    responses:
  *      '200':
- *        description: Mentor updated successfully.
+ *        description: Food item updated successfully.
  */
-router.put('/mentor/:mentorId', mentorsController.updateMentor);
+router.put('/food/:foodId', mentorsController.updateMentor);
 /**
  * @swagger
- * /api/mentor/{mentorId}:
+ * /api/mentor/{foodId}:
  *  delete:
  *    description: Removes mentor from DB.
  *    produces:
  *      - application/json
  *    parameters:
  *      - in: path
- *        name: mentorId
- *        description: Removes mentor from DB.
+ *        name: foodId
+ *        description: Food Item mentor from DB.
  *        schema:
  *          type: string
  *          required:
- *            - mentorId
+ *            - foodId
  *          properties:
- *            mentorId:
+ *            foodId:
  *              type: string
  *    responses:
  *      '200':
- *        description: mentor removed successfully.
+ *        description: Food removed successfully.
  */
 
 

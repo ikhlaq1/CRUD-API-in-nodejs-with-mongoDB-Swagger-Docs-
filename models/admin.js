@@ -2,33 +2,19 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const adminSchema = new Schema({
-    "mentorName": {
+    "foodName": {
         "type": "string",
         "required": true
       },
-      "Gender": {
+      "quantity": {
         "type": "string",
         "required": true
       },
-      "AgeYears": {
+      "createTillNow": {
         "type": "string",
         "required": true
       },
-      "description": {
-        "type": "string",
-        "required": true
-      },
-      "tasks": {
-        "type": [
-          "string"
-        ],
-        "required": true
-      },
-      "status": {
-        "type": "string",
-        "required": false
-      },
-      "ActivityLevel": {
+      "predicted": {
         "type": "string",
         "required": true
       }

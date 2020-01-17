@@ -14,11 +14,10 @@ exports.getMentor = (req, res, next) => {
             mentorModel.find()
                 .skip((currentPage - 1) * perPage)
                 .limit(perPage)
-                .then(mentors => {
+                .then(foods => {
                     res.status(200).json({
-                        message: "mentors fetched",
-                        mentors: mentors,
-                        totalMentors: totalMentors
+                        message: "food fetched",
+                        foods: foods,
                     })
                 })
                 .catch(err => {
@@ -48,30 +47,21 @@ exports.postMentor = (req, res, next) => {
         })
     }
     
-    const mentorName = req.body.mentorName;
-    const description = req.body.description;
-    const Gender = req.body.Gender;
-    const AgeYears = req.body.AgeYears;
-    const tasks = req.body.tasks.split(',');
-    const status = req.body.status;
-    const ActivityLevel = req.body.ActivityLevel;
+    const foodName = req.body.foodName;
+    const quantity = req.body.quantity;
+    const createTillNow = req.body.createTillNow;
+    const predicted = req.body.predicted;
     const mentor = new mentorModel({
-        mentorName: mentorName,
-        description: description,
-        Gender: Gender,
-        AgeYears: AgeYears,
-        tasks: tasks,
-        status: status,
-        ActivityLevel: ActivityLevel,
+        foodName: foodName,
+        quantity: quantity,
+        createTillNow: createTillNow,
+        predicted: predicted,
     });
     mentor.save()
         .then(result => {
             console.log(result);
             res.status(201).json({
-                message: "Mentor Added Successfully!",
-                mentor: {
-                    mentor: mentor
-                }
+                message: "Food Added Successfully!",
             })
         })
         .catch(err => {
@@ -80,10 +70,9 @@ exports.postMentor = (req, res, next) => {
 };
 
 exports.updateMentor = (req, res, next) => {
-    req.body.tasks = req.body.tasks.split(','); 
     mentorModel.findByIdAndUpdate(
         // the id of the item to find
-        req.params.mentorId,
+        req.params.foodId,
         // the change to be made. Mongoose will smartly combine your existing 
         // document with this change, which allows for partial updates too
         req.body,
@@ -92,15 +81,15 @@ exports.updateMentor = (req, res, next) => {
         { new: true },
         // the callback function
 
-    ).then(mentor => {
-        if (!mentor) {
-            const error = new Error("No mentor Found");
+    ).then(food => {
+        if (!food) {
+            const error = new Error("No Food Found");
             error.statusCode = 404;
             throw error
         }
         res.status(200).json({
-            message: "mentor updated succesfully",
-            mentor: mentor
+            message: "Food Item updated succesfully",
+            food: food
         })
     }).catch(err => {
         console.log(err)
@@ -114,12 +103,12 @@ exports.updateMentor = (req, res, next) => {
 }
 
 exports.deleteMentor = (req, res, next) => {
-    const mentorId = req.params.mentorId;
+    const mentorId = req.params.foodId;
 
     mentorModel.findByIdAndRemove(mentorId, function (err) {
         if (err) return next(err);
         res.status(200).json({
-            message: "Mentor deleted succesfully",
+            message: "Food deleted succesfully",
         })
     })
 
