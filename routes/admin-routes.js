@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require('express-validator');
 const router = express.Router();
-const mentorsController = require('../controllers/admin-controller');
+const foodController = require('../controllers/admin-controller');
 
   /**
  * @swagger
@@ -14,7 +14,7 @@ const mentorsController = require('../controllers/admin-controller');
  *      '200':
  *        description: foods fetched successfully.
  */
-router.get('/food', mentorsController.getMentor);
+router.get('/food', foodController.getFood);
 
 /**
  * @swagger
@@ -50,7 +50,7 @@ router.get('/food', mentorsController.getMentor);
 router.post('/food',[
     check('foodName').trim().isLength({min:1}),
     check('quantity').trim().isLength({min:1})
-],mentorsController.postMentor);
+],foodController.postFood);
  /**
  * @swagger
  * /api/food/{foodId}:
@@ -84,7 +84,7 @@ router.post('/food',[
  *      '200':
  *        description: Food item updated successfully.
  */
-router.put('/food/:foodId', mentorsController.updateMentor);
+router.put('/food/:foodId', foodController.updateFood);
 /**
  * @swagger
  * /api/food/{foodId}:
@@ -112,7 +112,7 @@ router.put('/food/:foodId', mentorsController.updateMentor);
 
 
 
-router.delete('/food/:foodId', mentorsController.deleteMentor);
+router.delete('/food/:foodId', foodController.deleteFood);
 
 
 module.exports = router;  

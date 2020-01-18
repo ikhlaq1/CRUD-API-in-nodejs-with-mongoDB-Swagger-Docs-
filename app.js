@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require('mongoose');
-const mentorsRoute = require('./routes/admin-routes');
+const foodRoute = require('./routes/admin-routes');
 
 // Swagger
 const swaggerJsDoc = require('swagger-jsdoc');
@@ -17,7 +17,7 @@ app.use((req,res,next)=>{
     next();
  }) 
 
-app.use('/api', mentorsRoute);
+app.use('/api', foodRoute);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 

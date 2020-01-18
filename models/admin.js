@@ -27,4 +27,4 @@ const adminSchema = new Schema({
     { timestamps: true }
 )
 
-module.exports = mongoose.model("Mentor",adminSchema)
+module.exports = mongoose.model("Food",adminSchema)

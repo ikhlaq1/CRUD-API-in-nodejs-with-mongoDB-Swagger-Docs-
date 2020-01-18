@@ -1,17 +1,15 @@
 const mongoose = require('mongoose');
 const { validationResult } = require('express-validator');
-const mentorModel = require('../models/admin')
+const foodModel = require('../models/admin')
 
-exports.getMentor = (req, res, next) => {
+exports.getFood = (req, res, next) => {
     const currentPage = req.query.page || 1;
     const perPage = 6;
-    let totalItems;
-    return mentorModel.find()
+    return foodModel.find()
         .countDocuments()
         .then(count => {
             console.log({ count })
-            totalMentors = count;
-            mentorModel.find()
+            foodModel.find()
                 .skip((currentPage - 1) * perPage)
                 .limit(perPage)
                 .then(foods => {
@@ -39,7 +37,7 @@ exports.getMentor = (req, res, next) => {
 
 
 
-exports.postMentor = (req, res, next) => {
+exports.postFood = (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(422).json({
@@ -52,14 +50,14 @@ exports.postMentor = (req, res, next) => {
     const createTillNow = req.body.createTillNow;
     const predicted = req.body.predicted;
     const status = req.body.status;
-    const mentor = new mentorModel({
+    const food = new foodModel({
         foodName: foodName,
         quantity: quantity,
         createTillNow: createTillNow,
         predicted: predicted,
         status: status
     });
-    mentor.save()
+    food.save()
         .then(result => {
             console.log(result);
             res.status(201).json({
@@ -71,8 +69,8 @@ exports.postMentor = (req, res, next) => {
         })
 };
 
-exports.updateMentor = (req, res, next) => {
-    mentorModel.findByIdAndUpdate(
+exports.updateFood = (req, res, next) => {
+    foodModel.findByIdAndUpdate(
         // the id of the item to find
         req.params.foodId,
         // the change to be made. Mongoose will smartly combine your existing 
@@ -104,10 +102,10 @@ exports.updateMentor = (req, res, next) => {
 
 }
 
-exports.deleteMentor = (req, res, next) => {
-    const mentorId = req.params.foodId;
+exports.deleteFood = (req, res, next) => {
+    const foodId = req.params.foodId;
 
-    mentorModel.findByIdAndRemove(mentorId, function (err) {
+    foodModel.findByIdAndRemove(foodId, function (err) {
         if (err) return next(err);
         res.status(200).json({
             message: "Food deleted succesfully",
@@ -115,26 +113,4 @@ exports.deleteMentor = (req, res, next) => {
     })
 
 
-    // mentorModel.findById(mentorId)
-    //     .then(mentor => {
-    //         if (!mentor) {
-    //             const error = new Error("No Menotor Found");
-    //             error.statusCode = 404;
-    //             throw error
-    //         }
-    //         mentor.remove(mentorId)
-    //             .then(res => {
-    //                 console.log({res})
-    //                 res.status(200).json({
-    //                     message: "Mentor deleted succesfully",
-    //                     mentor: mentor
-    //                 })
-    //             })
-    //             .catch(err => {
-    //                 if (!err.statusCode) {
-    //                     err.statusCode = 500
-    //                 }
-    //                 next(err)
-    //             })
-    //     })
 }
