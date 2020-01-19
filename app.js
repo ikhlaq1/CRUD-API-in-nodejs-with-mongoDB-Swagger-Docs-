@@ -28,7 +28,7 @@ app.use((error,req,res,next)=>{
     const message = error.message;
     res.status(status).json({message:message});
 })
-mongoose.connect("mongodb+srv://ikhlaq:H74vcNJWSh2KJolP@cluster0-khjj8.mongodb.net/pets?retryWrites=true&w=majority"
+mongoose.connect("mongo-connect-url-here"
 ).then(result =>{
     app.listen(process.env.PORT || 8080); 
 }).catch(err =>{
