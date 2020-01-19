@@ -31,8 +31,11 @@ and navigate to <http://localhost:8080/api-docs/>
 ## Usage example
 
 For Adding an item in Db
+
 For Getting items from Db
+
 For Updating an item in Db
+
 For Deleting an item in Db
 
 
