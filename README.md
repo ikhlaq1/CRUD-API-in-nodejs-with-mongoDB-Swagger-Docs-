@@ -12,11 +12,11 @@ This project act as a API service for Kitchen Inventory Angular App (But can be 
 
 ## Installation
 
-OS X & Linux:
-
+once repo is cloned cd to project and run
 ```sh
-npm install my-crazy-module --save
+npm install
 ```
+
 
 Windows:
 
